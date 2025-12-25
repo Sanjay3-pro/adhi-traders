@@ -2,32 +2,71 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
 body {
-  font-family: Arial, sans-serif;
   background: #ffffff;
   color: #222;
 }
 
+/* Header */
 .header {
   background: #0a7c3b;
-  color: white;
+  color: #fff;
   padding: 15px;
   text-align: center;
 }
 
-.hero {
-  padding: 40px 20px;
-  text-align: center;
+.nav {
+  margin-top: 10px;
 }
 
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: bold;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+/* Sections */
+section, main {
+  padding: 30px 20px;
+}
+
+/* Products */
+.product-list {
+  margin: 20px 0;
+}
+
+.product-item {
+  background: #f2f2f2;
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+/* WhatsApp Button */
 .whatsapp-btn {
   display: inline-block;
+  margin-top: 20px;
   background: #25d366;
-  color: white;
+  color: #fff;
   padding: 12px 20px;
   text-decoration: none;
   border-radius: 6px;
   font-weight: bold;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 15px;
+  background: #f2f2f2;
+  margin-top: 30px;
 }
