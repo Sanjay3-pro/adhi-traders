@@ -192,7 +192,7 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 40px;
-  max-width: 900px;
+  max-width: 1000px;
   margin: 60px auto;
 }
 
@@ -321,4 +321,502 @@ body {
     grid-column: span 1;
     width: 100%;
   }
+}
+/* =========================
+   HELP / CTA SECTION
+========================= */
+
+.help-cta {
+  background: linear-gradient(135deg, #122b6d, #243f99);
+  padding: 90px 20px;
+  color: #ffffff;
+}
+
+.help-box {
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
+
+.help-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+
+.help-box h2 {
+  font-size: 42px;
+  margin-bottom: 14px;
+}
+
+.help-box p {
+  font-size: 18px;
+  opacity: 0.95;
+  margin-bottom: 36px;
+}
+
+.help-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.help-btn {
+  padding: 14px 28px;
+  border-radius: 30px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.help-btn.call {
+  background: #ffffff;
+  color: #122b6d;
+}
+
+.help-btn.whatsapp {
+  background: #4f6fff;
+  color: #ffffff;
+}
+
+.help-btn:hover {
+  transform: translateY(-3px);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .help-box h2 {
+    font-size: 30px;
+  }
+
+  .help-box p {
+    font-size: 16px;
+  }
+}
+.lang-switch button {
+  border: 1px solid #fff;
+  background: transparent;
+  color: #fff;
+  padding: 6px 10px;
+  margin-left: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.lang-switch button:hover {
+  background: #fff;
+  color: #71887b;
+}
+/* ===== FOOTER FIX ===== */
+.footer {
+  background: #f1f1f1;
+  padding: 30px 20px;
+  text-align: center;
+  font-size: 14px;
+  margin-top: 80px;
+}
+
+/* Page height fix */
+body {
+  min-height: 100vh;
+}
+
+/* WhatsApp button not overlapping footer */
+.whatsapp-fixed {
+  bottom: 80px;   /* was 20px – this is the issue */
+}
+/* =========================
+   WHY CHOOSE – BOX STYLE
+========================= */
+
+.trust-pro {
+  background: #f6faf8;
+  padding: 80px 20px;
+}
+
+.trust-box {
+  max-width: 1100px;
+  margin: auto;
+  text-align: center;
+}
+
+.trust-box h3 {
+  font-size: 32px;
+  color: #0a7c3b;
+  margin-bottom: 12px;
+}
+
+.trust-desc {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.trust-item {
+  background: #ffffff;
+  padding: 28px 20px;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #222;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.trust-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(0,0,0,0.12);
+}
+/* =========================
+   FLOATING EMAIL (LEFT)
+========================= */
+.email-fixed {
+  position: fixed;
+  bottom: 20px;
+  left: -120px;              /* start hidden */
+  background: #0077cc;
+  color: #ffffff;
+  padding: 14px 20px;
+  border-radius: 40px;
+  font-weight: bold;
+  text-decoration: none;
+  z-index: 999;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+  animation: slideInLeft 0.8s ease forwards;
+}
+
+@keyframes slideInLeft {
+  to {
+    left: 20px;
+  }
+}
+.whatsapp-fixed {
+  position: fixed;
+  bottom: 20px;
+  right: -140px;            /* start hidden */
+  background: #25D366;
+  color: #ffffff;
+  padding: 14px 20px;
+  border-radius: 40px;
+  text-decoration: none;
+  font-weight: bold;
+  z-index: 999;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+  animation: slideInRight 0.8s ease forwards;
+}
+
+@keyframes slideInRight {
+  to {
+    right: 20px;
+  }
+}
+/* =========================
+   PRODUCT PAGE – IMPROVED BOX LAYOUT
+========================= */
+
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  max-width: 950px;
+  margin: 50px auto;
+}
+
+.product-item {
+  background: #ffffff;
+  padding: 22px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+
+  /* IMPORTANT */
+  height: 360px;              /* 👈 SAME SIZE FOR ALL */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+.product-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.product-item p {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Center last product */
+.product-item:last-child {
+  grid-column: span 2;
+  width: 50%;
+  justify-self: center;
+}
+
+/* Mobile fix */
+@media (max-width: 768px) {
+  .product-list {
+    grid-template-columns: 1fr;
+  }
+
+  .product-item:last-child {
+    grid-column: span 1;
+    width: 100%;
+  }
+}
+
+.page-title {
+  text-align: center;
+  font-size: 34px;
+  font-weight: 700;
+  margin-top: 50px;
+  position: relative;
+}
+
+.page-title::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: #0a7c3b; /* same green */
+  margin: 12px auto 0;
+  border-radius: 2px;
+}
+
+.page-subtitle {
+  text-align: center;
+  max-width: 700px;
+  margin: 12px auto 40px;
+  color: #555;
+  font-size: 16px;
+}
+.page-title {
+  text-align: center;
+  font-size: 34px;
+  font-weight: 700;
+  margin-top: 50px;
+  position: relative;
+}
+
+.page-title::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: #0a7c3b;
+  margin: 12px auto 0;
+  border-radius: 2px;
+}
+
+.page-subtitle {
+  text-align: center;
+  max-width: 700px;
+  margin: 12px auto 40px;
+  color: #555;
+  font-size: 16px;
+}
+.product-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+/* ================= PRODUCTS PAGE ONLY ================= */
+
+.page-title {
+  text-align: center;
+  font-size: 34px;
+  font-weight: 700;
+  margin-top: 50px;
+  position: relative;
+}
+
+.page-title::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: #0a7c3b;
+  margin: 12px auto 0;
+  border-radius: 2px;
+}
+
+.page-subtitle {
+  text-align: center;
+  max-width: 700px;
+  margin: 12px auto 40px;
+  color: #555;
+  font-size: 16px;
+}
+
+.product-list {
+  max-width: 1900px;
+  margin: 0 auto 80px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+.product-item {
+  background: #ffffff;
+  padding: 22px;
+  border-radius: 16px;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+  text-align: center;
+  transition: transform 0.25s ease;
+}
+
+.product-item:hover {
+  transform: translateY(-10px);
+}
+
+.product-item img {
+  width: 100%;
+  height: 220px;     /* ALL SAME SIZE */
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.product-item p {
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 14px;
+}
+
+.product-item a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.product-list a {
+  text-decoration: none;
+  color: inherit;
+}
+.page-header {
+  padding: 60px 20px 30px;
+  text-align: center;
+}
+
+.about-content {
+  max-width: 900px;
+  margin: 0 auto 80px;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.about-content p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.about-points {
+  list-style: none;
+  padding: 0;
+}
+
+.about-points li {
+  margin: 10px 0;
+  font-size: 16px;
+}
+/* ================= ABOUT PAGE STRENGTHS ================= */
+
+.about-strengths {
+  max-width: 1100px;
+  margin: 80px auto;
+  padding: 0 20px;
+}
+
+.strength-title {
+  font-size: 32px;
+  font-weight: 700;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.strength-title::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 4px;
+  background: #0a7c3b;
+  margin-top: 10px;
+  border-radius: 2px;
+}
+
+.strength-subtitle {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 40px;
+  max-width: 700px;
+}
+
+.strength-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+.strength-list {
+  list-style: none;
+  padding: 0;
+}
+
+.strength-list li {
+  font-size: 16px;
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .strength-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* About page – Sarra style font sizes */
+
+.page-title {
+  font-size: 42px;       /* MAIN heading size */
+  font-weight: 700;
+}
+
+.page-subtitle {
+  font-size: 18px;       /* Small line under heading */
+  margin-top: 10px;
+}
+
+.about-content p {
+  font-size: 18px;       /* Paragraph text like Sarra */
+  line-height: 1.8;
+  max-width: 900px;
+  margin: 30px 0;
+  text-align: left;
+}
+
+.about-content h3,
+.about-strengths-title {
+  font-size: 32px;       /* “Adhi Traders’ Strengths” */
+  font-weight: 700;
+}
+
+.about-points li {
+  font-size: 17px;       /* Tick list text */
+  line-height: 1.9;
 }
