@@ -12,6 +12,9 @@ body {
   background: #ffffff;
   color: #222;
   line-height: 1.6;
+  /* Enable scroll snapping between main sections */
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
 }
 
 /* =========================
@@ -118,8 +121,9 @@ body {
 ========================= */
 .hero-pro {
   background: linear-gradient(135deg, #0a7c3b, #119f5d);
-  padding: 100px 20px;
+  padding: 60px 20px; /* slightly reduced (was 70px) */
   color: #ffffff;
+  scroll-snap-align: start;
 }
 
 .hero-wrap {
@@ -223,19 +227,13 @@ body {
   font-weight: bold;
 }
 
-/* Center last product */
-.product-item:last-child {
-  grid-column: span 2;
-  width: 50%;
-  justify-self: center;
-}
-
 /* =========================
    TRUST SECTION
 ========================= */
 .trust-pro {
   padding: 70px 20px;
   background: #f6faf8;
+  scroll-snap-align: start;
 }
 
 .trust-box {
@@ -290,6 +288,75 @@ body {
   z-index: 999;
 }
 
+/* =========================
+   FEEDBACK / RATING
+========================= */
+.feedback-fixed {
+  position: fixed;
+  bottom: 20px;
+  right: 110px; /* left of WhatsApp */
+  background: #4f6fff;
+  color: #ffffff;
+  padding: 12px 18px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 700;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.feedback-modal {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0.95);
+  width: 92%;
+  max-width: 420px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  z-index: 1200;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.18s ease, opacity 0.18s ease;
+}
+
+.feedback-modal.open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.feedback-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.36);
+  z-index: 1190;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease;
+}
+.feedback-overlay.open { opacity: 1; pointer-events: auto; }
+
+.feedback-modal .inner { padding: 18px; }
+.feedback-modal h3 { margin: 0 0 10px 0; }
+.feedback-stars { display:flex; gap:8px; margin: 8px 0 12px; }
+.feedback-stars .star { background: transparent; border: 0; font-size: 22px; color: #ddd; cursor: pointer; }
+.feedback-stars .star.on { color: #f6b02d; }
+.feedback-field { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #e6e6e6; margin-bottom: 8px; }
+.feedback-actions { display:flex; gap:8px; justify-content:flex-end; }
+.feedback-close { background: transparent; border: 0; color: #666; cursor: pointer; }
+.feedback-message { color: #0a7c3b; margin-top:6px; min-height:20px; }
+
+/* small rating badge to show average */
+.rating-badge { display: inline-block; background: rgba(255,255,255,0.12); color: #fff; padding: 6px 10px; border-radius: 999px; margin-left: 10px; font-weight:700; }
+
+
+
+@media (max-width: 768px) {
+  .feedback-fixed { right: 20px; }
+  .rating-badge { display:none; }
+}
 /* =========================
    MOBILE
 ========================= */
@@ -563,22 +630,78 @@ body {
   margin-bottom: 12px;
 }
 
+/* =========================
+   LQIP — blur-up placeholders
+   Adds a low-quality blurred image which transitions to the final image
+========================= */
+.img-lqip {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px; /* match image rounding */
+  height: auto;
+  background: #f6f7f8;
+}
+.img-lqip picture,
+.img-lqip img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.lqip-img {
+  filter: blur(20px) scale(1.05);
+  transform: scale(1.05);
+  transition: filter 400ms ease, transform 400ms ease, opacity 300ms ease;
+  will-change: filter, transform, opacity;
+  opacity: 0.999; /* avoid subpixel issues */
+}
+.lqip-img.loaded {
+  filter: blur(0) scale(1);
+  transform: scale(1);
+  opacity: 1;
+}
+.img-lqip::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+  transform: translateX(-100%);
+  animation: shimmer 1.2s linear infinite;
+  pointer-events: none;
+}
+@keyframes shimmer {
+  to { transform: translateX(100%); }
+}
+
 .product-item p {
   font-size: 16px;
   font-weight: bold;
-}
-
-/* Center last product */
-.product-item:last-child {
-  grid-column: span 2;
-  width: 50%;
-  justify-self: center;
 }
 
 /* Mobile fix */
 @media (max-width: 768px) {
   .product-list {
     grid-template-columns: 1fr;
+  }
+
+  /* Disable scroll snap on small screens for smoother native behavior */
+  body {
+    scroll-snap-type: none;
+  }
+
+  /* Keep stable product image size on mobile */
+  .product-item {
+    height: auto !important;
+    display: block !important;
+    padding: 16px;
+    min-height: 220px; /* help cards keep visual height */
+  }
+
+  /* Fixed image height so images don't collapse */
+  .product-item img {
+    width: 100%;
+    height: 160px !important;
+    object-fit: cover;
+    border-radius: 10px;
   }
 
   .product-item:last-child {
@@ -873,6 +996,31 @@ body {
     padding: 20px 12px;
     text-align: center;
   }
+
+  /* Keep phone and WhatsApp inline in footer */
+  .footer .footer-contact {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    white-space: nowrap;
+    vertical-align: middle;
+  }
+
+  .footer .footer-contact a {
+    padding: 0;
+    vertical-align: middle;
+    display: inline-block;
+  }
+
+  /* allow wrapping on very small screens */
+  @media (max-width: 360px) {
+    .footer .footer-contact {
+      display: block;
+      white-space: normal;
+    }
+
+    .footer .footer-contact a { display: inline; }
+  }
 }
 
 /* CONTACT PAGE */
@@ -932,10 +1080,10 @@ body {
     position: relative;
   }
 
-  /* Align brand to left on mobile */
+  /* Align brand to left on mobile (reserve right space for hamburger) */
   .brand {
     align-self: flex-start;
-    padding-left: 56px; /* room for left-positioned hamburger */
+    padding-right: 56px; /* room for right-positioned hamburger */
   }
 
   .brand h1 {
@@ -981,7 +1129,7 @@ body {
     padding: 8px;
     z-index: 1101; /* ensure on top and clickable */
     position: absolute;
-    left: 12px;
+    right: 12px;
     top: 10px;
     touch-action: manipulation; /* improve touch responsiveness */
   }

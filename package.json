@@ -1,0 +1,10 @@
+{
+  "name": "adhi-traders",
+  "version": "1.0.0",
+  "scripts": {
+    "resize-images": "node scripts/resize-images.js"
+  },
+  "devDependencies": {
+    "sharp": "^0.32.0"
+  }
+}
