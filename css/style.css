@@ -950,4 +950,57 @@ body {
     align-self: flex-end;
   }
 }
+@media (max-width: 768px) {
 
+  /* Header WhatsApp move to right */
+  .header {
+    position: relative;
+  }
+
+  .header-whatsapp {
+    position: absolute;
+    right: 14px;
+    top: 14px;
+    transform: none;
+  }
+
+  /* Reduce header height */
+  .header-wrap {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .nav {
+    font-size: 14px;
+    gap: 12px;
+  }
+
+  /* Hero spacing fix */
+  .hero {
+    padding: 36px 16px 28px;
+  }
+
+  .hero h1 {
+    font-size: 26px;
+    line-height: 1.25;
+  }
+
+  .hero p {
+    font-size: 15px;
+    margin-top: 10px;
+  }
+
+  /* Center buttons properly on mobile */
+  .hero-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    margin-top: 22px;
+  }
+
+  .hero-buttons a {
+    width: 85%;
+    text-align: center;
+  }
+}
