@@ -942,4 +942,12 @@ body {
   }
 
 }
- 
+/* Move header WhatsApp to right on mobile */
+@media (max-width: 768px) {
+  .header-whatsapp {
+    margin-left: auto;
+    margin-right: 16px;
+    align-self: flex-end;
+  }
+}
+
